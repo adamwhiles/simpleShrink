@@ -8,7 +8,7 @@ const slash = require("slash");
 const log = require("electron-log");
 
 // Set Env
-process.env.NODE_ENV = "production";
+process.env.NODE_ENV = "development";
 
 const isDev = process.env.NODE_ENV !== "production" ? true : false;
 const isMac = process.platform === "darwin" ? true : false;
