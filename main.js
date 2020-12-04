@@ -6,6 +6,7 @@ const imageminMozjpeg = require("imagemin-mozjpeg");
 const imageminPngquant = require("imagemin-pngquant");
 const slash = require("slash");
 const log = require("electron-log");
+if (require("electron-squirrel-startup")) return app.quit(); // prevents app from running while squirrel install is running
 
 // Set Env
 process.env.NODE_ENV = "development";
