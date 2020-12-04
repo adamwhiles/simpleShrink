@@ -139,5 +139,7 @@ node_modules
 psd
 thumb
 sketch
+out
+out/
 
 # End of https://www.toptal.com/developers/gitignore/api/node,linux,react

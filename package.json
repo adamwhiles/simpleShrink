@@ -4,21 +4,56 @@
   "description": "Simple app to shrink and optimize images",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
-    "dev": "nodemon --exec electron ."
+    "start": "electron-forge start",
+    "dev": "nodemon --exec electron .",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "author": "Adam Whiles",
   "license": "MIT",
   "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
     "electron": "^11.0.3",
     "nodemon": "^2.0.6",
     "prettier": "2.2.1"
   },
   "dependencies": {
     "electron-log": "^4.3.0",
+    "electron-squirrel-startup": "^1.0.0",
     "imagemin": "^7.0.1",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-pngquant": "^9.0.1",
     "slash": "^3.0.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "simpleshrink"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
   }
 }
