@@ -8,10 +8,6 @@ const slash = require("slash");
 const log = require("electron-log");
 if (require("electron-squirrel-startup")) return app.quit(); // prevents app from running while squirrel install is running
 
-// Set Env
-process.env.NODE_ENV = "development";
-
-const isDev = process.env.NODE_ENV !== "production" ? true : false;
 const isMac = process.platform === "darwin" ? true : false;
 
 let mainWindow;
@@ -21,20 +17,16 @@ function createMainWindow() {
   log.verbose("loading app..");
   mainWindow = new BrowserWindow({
     title: "simpleShrink",
-    width: isDev ? 800 : 500,
+    width: 500,
     height: 600,
     icon: `${__dirname}/assets/icons/simpleShrinkIcon256x256.png`,
-    resizable: isDev,
+    resizable: false,
     backgroundColor: "white",
     webPreferences: {
       nodeIntegration: true,
     },
   });
   log.verbose("app loaded");
-  if (isDev) {
-    log.verbose("in dev, launching dev tools");
-    mainWindow.webContents.openDevTools();
-  }
 
   mainWindow.loadFile("./app/index.html");
   log.verbose("loaded main view");
